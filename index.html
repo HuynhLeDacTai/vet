@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Vẹt">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#E9EEF2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1A27" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<title>Vẹt: luyện nói theo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #E9EEF2; --surface: #F7F9FB; --line: #CDD6DF; --ink: #14233A; --muted: #56667B;
+  --brand: #1E7F5C; --mic: #F2B705; --mic-ink: #14233A; --stress: #2F4FC4;
+  --ok: #1E7F5C; --close: #A86A12; --bad: #C0392B; --miss: #8090A3;
+  --p-none: #D5DDE5; --p-low: #E9A99F; --p-mid: #EBCB7E; --p-high: #7FC4A4;
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --stress: #8FA8FF;
+    --bg: #0F1A27; --surface: #172434; --line: #2A3B50; --ink: #E6EDF5; --muted: #93A3B8;
+    --brand: #4CC38A; --ok: #4CC38A; --close: #E0A84A; --bad: #F0776A; --miss: #6F8095;
+    --p-none: #26364A; --p-low: #8C4A43; --p-mid: #8A6A2A; --p-high: #2F7A5A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --stress: #8FA8FF;
+  --bg: #0F1A27; --surface: #172434; --line: #2A3B50; --ink: #E6EDF5; --muted: #93A3B8;
+  --brand: #4CC38A; --ok: #4CC38A; --close: #E0A84A; --bad: #F0776A; --miss: #6F8095;
+  --p-none: #26364A; --p-low: #8C4A43; --p-mid: #8A6A2A; --p-high: #2F7A5A;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-size: 1rem; line-height: 1.55;
+  -webkit-tap-highlight-color: transparent;
+}
+button, select, input, label { touch-action: manipulation; }
+.wrap { max-width: 46rem; margin: 0 auto; padding: 1rem 1rem 8rem; }
+
+header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .6rem 1rem; margin-bottom: 1rem; }
+header h1 { font-family: "Bricolage Grotesque", -apple-system, sans-serif; font-weight: 700; font-size: 1.75rem; margin: 0; color: var(--brand); letter-spacing: -.01em; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--surface); }
+.seg button { border: 0; background: transparent; color: var(--muted); font: inherit; font-size: .9rem; padding: .35rem .8rem; border-radius: 999px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+
+.notice { margin: 0 0 1rem; padding: .75rem 1rem; border-radius: 12px; border: 1px solid var(--bad); background: color-mix(in srgb, var(--bad) 10%, var(--surface)); }
+.notice[hidden] { display: none; }
+
+.stage { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 1.1rem 1.1rem 1.2rem; }
+.meta { display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: .9rem; margin-bottom: .8rem; gap: .5rem; }
+.meta .nav { display: flex; gap: .4rem; }
+.icon-btn { font: inherit; border: 1px solid var(--line); background: var(--bg); color: var(--ink); border-radius: 10px; min-width: 2.6rem; height: 2.4rem; cursor: pointer; padding: 0 .6rem; }
+.lv { border: 1px solid var(--line); border-radius: 6px; padding: .05rem .5rem; margin-left: .4rem; }
+
+#target {
+  font-family: "Bricolage Grotesque", -apple-system, sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 6.2vw, 2.4rem);
+  line-height: 1.38;
+  letter-spacing: -.01em;
+  margin: 0 0 .4rem;
+}
+#target .w { border-radius: 4px; text-decoration-thickness: 2px; text-underline-offset: .2em; cursor: pointer; }
+#target .w b { font-weight: 400; }
+#target.stress .w b { font-weight: 700; font-size: 1.15em; color: var(--stress); }
+#target.stress .w.ok b, #target.stress .w.close b, #target.stress .w.bad b, #target.stress .w.miss b { color: inherit; }
+#target.stress .w.has-stress { font-weight: 400; }
+#target .pause { color: var(--muted); font-weight: 400; padding: 0 .05em; }
+#target:not(.stress) .pause { display: none; }
+#target .into { color: var(--brand); font-weight: 700; margin-left: .15em; }
+#target:not(.stress) .into { display: none; }
+#target .w.ok { color: var(--ok); }
+#target .w.close { color: var(--close); text-decoration: underline dashed var(--close); }
+#target .w.bad { color: var(--bad); text-decoration: underline wavy var(--bad); }
+#target .w.miss { color: var(--miss); text-decoration: underline dotted var(--miss); }
+#target .w.speaking { background: color-mix(in srgb, var(--mic) 35%, transparent); }
+
+.hint { color: var(--muted); font-size: .88rem; margin: 0 0 .6rem; }
+#vi { color: var(--muted); margin: 0 0 .4rem; }
+#vi[hidden] { display: none; }
+
+.result { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.score { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 2.4rem; line-height: 1; min-width: 4.2ch; }
+.score small { font-size: 1rem; color: var(--muted); font-weight: 400; }
+.said { margin: .6rem 0 0; }
+.said .lbl { color: var(--muted); font-size: .88rem; display: block; }
+.said .extra { color: var(--bad); text-decoration: line-through; }
+#feedback { margin: .35rem 0 0; color: var(--muted); }
+.mine { display: flex; gap: .5rem; flex-wrap: wrap; }
+.btn { font: inherit; font-weight: 700; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); padding: .6rem 1rem; cursor: pointer; }
+.btn:disabled { opacity: .4; cursor: not-allowed; }
+#playing { color: var(--brand); font-weight: 700; min-height: 1.5em; margin: .5rem 0 0; font-size: .95rem; }
+
+.legend { display: flex; flex-wrap: wrap; gap: .3rem .9rem; font-size: .82rem; color: var(--muted); margin-top: .8rem; }
+.legend span::before { content: ""; display: inline-block; width: .65rem; height: .65rem; border-radius: 3px; margin-right: .3rem; }
+.legend .l-ok::before { background: var(--ok); } .legend .l-close::before { background: var(--close); }
+.legend .l-bad::before { background: var(--bad); } .legend .l-miss::before { background: var(--miss); }
+
+details.settings { margin-top: 1rem; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: .7rem 1rem; }
+details.settings summary { cursor: pointer; font-weight: 700; }
+.set-grid { display: grid; gap: .8rem; margin-top: .8rem; color: var(--muted); font-size: .95rem; }
+.set-grid label { display: flex; align-items: center; gap: .55rem; }
+.set-grid input[type="checkbox"] { width: 1.15rem; height: 1.15rem; accent-color: var(--brand); }
+.set-grid input[type="range"] { flex: 1; accent-color: var(--brand); }
+.set-grid select { font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: .35rem; max-width: 100%; flex: 1; }
+
+.strip { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1.2rem; }
+.strip button { width: 1.75rem; height: 1.75rem; border-radius: 6px; border: 2px solid transparent; background: var(--p-none); cursor: pointer; padding: 0; }
+.strip button.low { background: var(--p-low); } .strip button.mid { background: var(--p-mid); } .strip button.high { background: var(--p-high); }
+.strip button[aria-current="true"] { border-color: var(--ink); }
+.strip-note { color: var(--muted); font-size: .85rem; margin: .5rem 0 0; }
+.strip-note button { font: inherit; color: var(--brand); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; }
+
+.bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 5;
+  background: var(--surface); border-top: 1px solid var(--line);
+  padding: .65rem max(1rem, env(safe-area-inset-left, 0px)) calc(.65rem + env(safe-area-inset-bottom, 0px));
+}
+.bar-in { max-width: 46rem; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.35fr 1fr; gap: .55rem; }
+.bar .btn { padding: .85rem .5rem; font-size: .98rem; }
+.bar .rec { background: var(--mic); color: var(--mic-ink); border-color: transparent; font-size: 1.05rem; }
+.bar .rec.on { animation: pulse 1.2s ease-in-out infinite; }
+.bar .btn.active { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+@keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--mic) 60%, transparent); } 50% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--mic) 0%, transparent); } }
+@media (prefers-reduced-motion: reduce) { .bar .rec.on { animation: none; outline: 3px solid var(--mic); outline-offset: 2px; } }
+:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Vẹt</h1>
+    <div class="seg" role="group" aria-label="Chọn độ khó" id="levels">
+      <button data-lv="all" aria-pressed="true">Tất cả</button>
+      <button data-lv="1" aria-pressed="false">Dễ</button>
+      <button data-lv="2" aria-pressed="false">Vừa</button>
+      <button data-lv="3" aria-pressed="false">Khó</button>
+    </div>
+  </header>
+
+  <p class="notice" id="notice" hidden></p>
+
+  <section class="stage">
+    <div class="meta">
+      <span><span id="counter">Câu 1 trên 30</span><span class="lv" id="lvtag">Dễ</span></span>
+      <span class="nav">
+        <button class="icon-btn" id="prevBtn" aria-label="Câu trước">‹</button>
+        <button class="icon-btn" id="randBtn" aria-label="Câu ngẫu nhiên">⤮</button>
+        <button class="icon-btn" id="nextBtn" aria-label="Câu tiếp">›</button>
+      </span>
+    </div>
+    <p id="target" class="stress"></p>
+    <p class="hint" id="stressHint">Chữ xanh dương, to và đậm là âm cần nhấn. Dấu | là chỗ ngắt hơi. Mũi tên cuối câu cho biết lên hay xuống giọng.</p>
+    <p id="vi" hidden></p>
+
+    <div class="result" aria-live="polite">
+      <div class="row">
+        <div class="score" id="score">–</div>
+        <div class="mine">
+          <button class="btn" id="mineBtn" disabled>Nghe giọng mình</button>
+        </div>
+      </div>
+      <p id="playing"></p>
+      <p class="said"><span class="lbl">Máy nghe được</span><span id="said">Bấm “Nói” rồi đọc to câu ở trên.</span></p>
+      <p id="feedback"></p>
+      <div class="legend" id="legend" aria-label="Chú thích màu">
+        <span class="l-ok">Đúng</span><span class="l-close">Gần đúng</span><span class="l-bad">Sai từ</span><span class="l-miss">Bị thiếu</span>
+      </div>
+    </div>
+  </section>
+
+  <details class="settings">
+    <summary>Cài đặt</summary>
+    <div class="set-grid">
+      <label><input type="checkbox" id="optStress"> Hiện trọng âm và ngữ điệu</label>
+      <label><input type="checkbox" id="optVi"> Hiện nghĩa tiếng Việt</label>
+      <label><input type="checkbox" id="optScore"> Chấm từ bằng nhận giọng nói</label>
+      <label>Tốc độ <input type="range" id="rate" min="0.6" max="1.2" step="0.05"> <span id="rateVal"></span></label>
+      <label>Giọng <select id="voice"></select></label>
+    </div>
+  </details>
+
+  <div class="strip" id="strip" aria-label="Tiến độ từng câu"></div>
+  <p class="strip-note">Mỗi ô là một câu, màu theo điểm cao nhất. <button id="resetBtn">Xoá tiến độ</button></p>
+</div>
+
+<div class="bar">
+  <div class="bar-in">
+    <button class="btn" id="playBtn">Nghe mẫu</button>
+    <button class="btn rec" id="recBtn">Nói</button>
+    <button class="btn" id="cmpBtn" disabled>So sánh</button>
+  </div>
+</div>
+
+<script>
+/* [ ] = stressed syllable, / = pause, into: "up" or "down" at the end */
+const RAW = [
+  [1, "Good [mor]ning, / how are you to[day]?", "down", "Chào buổi sáng, hôm nay bạn thế nào?"],
+  [1, "I would [like] a cup of [cof]fee.", "down", "Tôi muốn một ly cà phê."],
+  [1, "Can you [say] that a[gain], / [please]?", "up", "Bạn nói lại giúp mình được không?"],
+  [1, "I [live] near the [beach].", "down", "Tôi sống gần biển."],
+  [1, "What [time] does the [meet]ing [start]?", "down", "Mấy giờ cuộc họp bắt đầu?"],
+  [1, "I am [work]ing on a [new] [pro]ject.", "down", "Tôi đang làm một dự án mới."],
+  [1, "Let me [check] / and get [back] to you.", "down", "Để mình kiểm tra rồi trả lời bạn sau."],
+  [1, "The [wea]ther is [real]ly [nice] to[day].", "down", "Hôm nay thời tiết đẹp thật."],
+  [1, "I [u]sually go to [bed] [late].", "down", "Tôi thường đi ngủ muộn."],
+  [1, "[Thanks] for your [help] / [yes]terday.", "down", "Cảm ơn bạn đã giúp hôm qua."],
+  [2, "Could you [share] your [screen] / so we can [look] at the [er]ror?", "up", "Bạn chia sẻ màn hình được không để mình cùng xem lỗi?"],
+  [2, "I [think] the [prob]lem [hap]pens / when [two] re[quests] ar[rive] / at the [same] [time].", "down", "Mình nghĩ lỗi xảy ra khi hai request đến cùng lúc."],
+  [2, "I’m [not] [sure] I under[stand], / could you [give] me an ex[am]ple?", "up", "Mình chưa chắc là hiểu, bạn cho mình một ví dụ được không?"],
+  [2, "We should [fin]ish the [test]ing / be[fore] we de[ploy] on [Fri]day.", "down", "Mình nên test xong trước khi deploy vào thứ Sáu."],
+  [2, "My [friends] and I are [plan]ning a [trip] / next [month].", "down", "Mình với bạn bè đang lên kế hoạch đi chơi tháng sau."],
+  [2, "It [took] me a [while] / to [fig]ure out / what was [go]ing [on].", "down", "Mình mất một lúc mới hiểu chuyện gì đang xảy ra."],
+  [2, "If you have [an]y [ques]tions, / feel [free] to [ask] me.", "down", "Nếu có câu hỏi gì thì cứ thoải mái hỏi mình."],
+  [2, "The [ser]vice was [down] / for a[bout] [ten] [min]utes / this [mor]ning.", "down", "Sáng nay service bị sập khoảng mười phút."],
+  [2, "I pre[fer] [work]ing from [home] / when I [need] to [fo]cus.", "down", "Mình thích làm ở nhà khi cần tập trung."],
+  [2, "Let’s [sched]ule a [quick] [call] / to dis[cuss] the [de]tails.", "down", "Mình hẹn một cuộc gọi ngắn để bàn chi tiết nhé."],
+  [3, "Al[though] the so[lu]tion [works], / I’m [wor]ried it [won’t] [scale] / when [traf]fic in[creas]es.", "down", "Dù giải pháp chạy được, mình lo nó sẽ không chịu nổi khi lượng truy cập tăng."],
+  [3, "Would it be [pos]sible / to [push] the [dead]line [back] / by a [cou]ple of [days]?", "up", "Có thể lùi hạn chót thêm vài ngày được không?"],
+  [3, "The [thing] I find most [chal]lenging / is ex[plain]ing [tech]nical i[de]as / to [peo]ple out[side] the [team].", "down", "Điều mình thấy khó nhất là giải thích ý tưởng kỹ thuật cho người ngoài team."],
+  [3, "[Hon]estly, / I [would]n’t have [no]ticed the [is]sue / if the [cus]tomer [had]n’t re[port]ed it.", "down", "Thật lòng, nếu khách hàng không báo thì mình đã không nhận ra lỗi đó."],
+  [3, "We [need] to think [care]fully / about the [costs] and [ben]efits / be[fore] making a de[ci]sion.", "down", "Mình cần cân nhắc kỹ lợi và hại trước khi quyết định."],
+  [3, "I’ve been [mean]ing to learn something [new], / but I [nev]er seem to [find] the [time].", "down", "Mình định học một thứ mới lâu rồi, nhưng hình như chẳng bao giờ có thời gian."],
+  [3, "De[spite] the [hea]vy [rain], / [thou]sands of [peo]ple [gath]ered a[long] the [riv]er / to [watch] the [fire]works.", "down", "Dù mưa to, hàng nghìn người vẫn tụ tập dọc bờ sông để xem pháo hoa."],
+  [3, "What I’m [try]ing to [say] / is that we should [fix] the [root] cause / [rath]er than the [symp]toms.", "down", "Ý mình là nên sửa tận gốc nguyên nhân chứ không chỉ sửa triệu chứng."],
+  [3, "It’s [not] that I disa[gree] with you, / I just [think] we’re [miss]ing / some im[por]tant infor[ma]tion.", "down", "Không phải mình không đồng ý với bạn, chỉ là mình nghĩ mình đang thiếu vài thông tin quan trọng."],
+  [3, "By the [time] we [re]alized what had [hap]pened, / the [da]ta had al[read]y been [pro]cessed [twice].", "down", "Đến lúc nhận ra chuyện gì đã xảy ra thì dữ liệu đã bị xử lý hai lần rồi."]
+];
+const SENTENCES = RAW.map(([lv, mk, into, vi], id) => ({
+  id, lv, mk, into, vi,
+  en: mk.replace(/[\[\]]/g, "").replace(/\s\/\s/g, " ")
+}));
+const LV_NAME = { 1: "Dễ", 2: "Vừa", 3: "Khó" };
+const NUMS = { zero:"0", one:"1", two:"2", three:"3", four:"4", five:"5", six:"6", seven:"7", eight:"8", nine:"9", ten:"10", eleven:"11", twelve:"12", twenty:"20", thirty:"30", hundred:"100" };
+const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+/* ---------- storage ---------- */
+function load(k, f) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : f; } catch { return f; } }
+function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+const settings = Object.assign({ level: "all", idx: 0, rate: 0.9, voice: "", showVi: false, stress: true, score: true }, load("vet:settings", {}));
+let best = load("vet:best", {});
+
+const $ = id => document.getElementById(id);
+
+/* ---------- scoring helpers ---------- */
+function norm(w) {
+  const t = w.toLowerCase().replace(/[\[\]’']/g, "").replace(/[^a-z0-9]/g, "");
+  return NUMS[t] || t;
+}
+function lev(a, b) {
+  let prev = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) {
+    const cur = [i];
+    for (let j = 1; j <= b.length; j++) cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    prev = cur;
+  }
+  return prev[b.length];
+}
+function similar(a, b) { return 1 - lev(a, b) / Math.max(a.length, b.length, 1); }
+function subCost(a, b) { return a === b ? 0 : similar(a, b) >= 0.6 ? 0.6 : 1; }
+function align(ref, hyp) {
+  const n = ref.length, m = hyp.length;
+  const dp = Array.from({ length: n + 1 }, (_, i) => Array.from({ length: m + 1 }, (_, j) => (i === 0 ? j : j === 0 ? i : 0)));
+  for (let i = 1; i <= n; i++) for (let j = 1; j <= m; j++)
+    dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + subCost(ref[i - 1], hyp[j - 1]));
+  const status = new Array(n).fill("miss"), spoken = [];
+  let i = n, j = m;
+  while (i > 0 || j > 0) {
+    if (i > 0 && j > 0 && Math.abs(dp[i][j] - (dp[i - 1][j - 1] + subCost(ref[i - 1], hyp[j - 1]))) < 1e-9) {
+      status[i - 1] = ref[i - 1] === hyp[j - 1] ? "ok" : similar(ref[i - 1], hyp[j - 1]) >= 0.6 ? "close" : "bad";
+      spoken.unshift({ w: hyp[j - 1], extra: false }); i--; j--;
+    } else if (i > 0 && Math.abs(dp[i][j] - (dp[i - 1][j] + 1)) < 1e-9) { i--; }
+    else { spoken.unshift({ w: hyp[j - 1], extra: true }); j--; }
+  }
+  const pts = status.reduce((s, x) => s + (x === "ok" ? 1 : x === "close" ? 0.5 : 0), 0);
+  return { status, spoken, score: n ? Math.round(pts / n * 100) : 0 };
+}
+
+/* ---------- sentence list ---------- */
+function list() { return settings.level === "all" ? SENTENCES : SENTENCES.filter(s => String(s.lv) === settings.level); }
+function current() { const l = list(); settings.idx = Math.min(Math.max(settings.idx, 0), l.length - 1); return l[settings.idx]; }
+function tokens(s) {
+  return s.mk.split(/\s+/).map(t => t === "/" ? { pause: true } : { raw: t, n: norm(t) }).filter(t => t.pause || t.n);
+}
+function wordHTML(raw) {
+  return raw.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/\[([^\]]+)\]/g, "<b>$1</b>");
+}
+
+let wordSpans = [];
+function renderSentence(statuses) {
+  const s = current(), t = $("target");
+  t.innerHTML = ""; wordSpans = [];
+  let k = 0;
+  tokens(s).forEach((tok, idx, arr) => {
+    if (tok.pause) {
+      const p = document.createElement("span"); p.className = "pause"; p.textContent = "|"; t.appendChild(p);
+    } else {
+      const span = document.createElement("span");
+      span.className = "w" + (statuses ? " " + statuses[k] : "");
+      span.innerHTML = wordHTML(tok.raw);
+      const plain = tok.raw.replace(/[\[\]]/g, "").replace(/[^\w’']/g, "");
+      span.addEventListener("click", () => speak(plain, Math.max(0.6, settings.rate - 0.15)));
+      t.appendChild(span); wordSpans.push(span); k++;
+    }
+    if (idx < arr.length - 1) t.appendChild(document.createTextNode(" "));
+  });
+  const ar = document.createElement("span");
+  ar.className = "into";
+  ar.textContent = s.into === "up" ? "↗" : "↘";
+  ar.title = s.into === "up" ? "Lên giọng ở cuối câu" : "Xuống giọng ở cuối câu";
+  t.appendChild(ar);
+}
+
+function render() {
+  stopEverything();
+  const s = current(), l = list();
+  $("counter").textContent = `Câu ${settings.idx + 1} trên ${l.length}`;
+  $("lvtag").textContent = LV_NAME[s.lv];
+  renderSentence(null);
+  $("vi").textContent = s.vi; $("vi").hidden = !settings.showVi;
+  $("score").innerHTML = "–";
+  $("said").textContent = settings.score ? "Bấm “Nói” rồi đọc to câu ở trên." : "Chế độ chấm từ đang tắt. Bấm “Nói” để ghi âm, sau đó bấm “So sánh”.";
+  $("feedback").textContent = best[s.id] != null ? `Điểm cao nhất ở câu này: ${best[s.id]}%` : "";
+  $("playing").textContent = "";
+  clearTake();
+  renderStrip();
+  save("vet:settings", settings);
+}
+function renderStrip() {
+  const strip = $("strip"); strip.innerHTML = "";
+  list().forEach((s, k) => {
+    const b = document.createElement("button"), sc = best[s.id];
+    b.className = sc == null ? "" : sc >= 90 ? "high" : sc >= 50 ? "mid" : "low";
+    b.setAttribute("aria-label", `Câu ${k + 1}${sc != null ? `, điểm cao nhất ${sc}%` : ", chưa luyện"}`);
+    b.setAttribute("aria-current", k === settings.idx ? "true" : "false");
+    b.addEventListener("click", () => { settings.idx = k; render(); });
+    strip.appendChild(b);
+  });
+}
+function feedbackFor(sc) {
+  if (sc >= 90) return "Từ ngữ rõ ràng. Giờ bấm “So sánh” và nghe xem nhấn và lên xuống giọng đã giống mẫu chưa.";
+  if (sc >= 70) return "Khá ổn. Chạm vào từ màu cam hoặc đỏ để nghe riêng, rồi nói lại cả câu.";
+  if (sc >= 40) return "Giảm tốc độ trong Cài đặt, nghe mẫu thêm lần nữa, rồi nói theo từng cụm giữa các dấu |.";
+  return "Nghe mẫu chậm vài lần trước khi nói. Tập trung vào nhịp và các âm nhấn, chưa cần đúng từng từ.";
+}
+function evaluate(alts) {
+  const s = current(), ref = tokens(s).filter(t => !t.pause).map(t => t.n);
+  let top = null, txt = "";
+  for (const a of alts) { const r = align(ref, a.split(/\s+/).map(norm).filter(Boolean)); if (!top || r.score > top.score) { top = r; txt = a; } }
+  if (!top) return;
+  renderSentence(top.status);
+  $("score").innerHTML = `${top.score}<small>%</small>`;
+  const said = $("said"); said.innerHTML = "";
+  top.spoken.forEach((x, k) => {
+    const sp = document.createElement("span"); sp.textContent = x.w;
+    if (x.extra) { sp.className = "extra"; sp.title = "Từ thừa"; }
+    said.appendChild(sp); if (k < top.spoken.length - 1) said.appendChild(document.createTextNode(" "));
+  });
+  if (!top.spoken.length) said.textContent = txt || "(trống)";
+  if (best[s.id] == null || top.score > best[s.id]) { best[s.id] = top.score; save("vet:best", best); }
+  $("feedback").textContent = feedbackFor(top.score) + ` Điểm cao nhất: ${best[s.id]}%.`;
+  renderStrip();
+}
+
+/* ---------- text to speech ---------- */
+let voices = [];
+function loadVoices() {
+  if (!("speechSynthesis" in window)) return;
+  const rank = v => (/en[-_]us/i.test(v.lang) ? 2 : 0) + (/google|natural|samantha|siri|enhanced|premium|aria|jenny/i.test(v.name) ? 3 : 0);
+  voices = speechSynthesis.getVoices().filter(v => /^en/i.test(v.lang)).sort((a, b) => rank(b) - rank(a));
+  const sel = $("voice"); sel.innerHTML = "";
+  voices.forEach(v => { const o = document.createElement("option"); o.value = v.voiceURI; o.textContent = `${v.name} (${v.lang})`; sel.appendChild(o); });
+  if (!voices.length) { const o = document.createElement("option"); o.textContent = "Giọng mặc định"; sel.appendChild(o); }
+  if (settings.voice && voices.some(v => v.voiceURI === settings.voice)) sel.value = settings.voice;
+  else if (voices[0]) settings.voice = voices[0].voiceURI;
+}
+function speak(text, rate, onend) {
+  if (!("speechSynthesis" in window) || !text) { if (onend) onend(); return; }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-US"; u.rate = rate || settings.rate;
+  const v = voices.find(v => v.voiceURI === settings.voice); if (v) u.voice = v;
+  if (onend) {
+    let done = false;
+    const finish = () => { if (!done) { done = true; onend(); } };
+    u.onend = finish; u.onerror = finish;
+    /* safety net: some iOS versions skip onend */
+    setTimeout(finish, Math.max(3000, text.length * 110 / u.rate));
+  }
+  speechSynthesis.speak(u);
+}
+
+/* ---------- recording + recognition ---------- */
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+const canRecord = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder);
+const mineAudio = new Audio();
+mineAudio.preload = "auto";
+let stream = null, recorder = null, chunks = [], takeUrl = null, recTimer = null;
+let rec = null, recording = false, gotFinal = false, srFailed = false;
+
+const SR_ERRORS = {
+  "not-allowed": "Trình duyệt chưa cho dùng micro. Hãy cho phép micro cho trang này rồi thử lại.",
+  "service-not-allowed": isIOS
+    ? "iPhone đang chặn nhận giọng nói. Vào Cài đặt > Cài đặt chung > Bàn phím và bật Đọc chính tả. Bạn vẫn có thể ghi âm và so sánh, hoặc tắt “Chấm từ” trong Cài đặt."
+    : "Trình duyệt chặn nhận giọng nói ở trang này. Mở trang trong tab riêng rồi thử lại.",
+  "no-speech": "Không nghe thấy giọng nói. Nói to hơn và bắt đầu ngay sau khi bấm.",
+  "audio-capture": "Không lấy được micro cho phần chấm từ. Phần ghi âm vẫn chạy, bấm “Dừng” khi nói xong.",
+  "network": "Nhận giọng nói cần mạng. Kiểm tra kết nối rồi thử lại."
+};
+function notice(msg) { $("notice").textContent = msg || ""; $("notice").hidden = !msg; }
+
+function setRecording(on) {
+  recording = on;
+  $("recBtn").classList.toggle("on", on);
+  $("recBtn").textContent = on ? "Dừng" : "Nói";
+}
+function clearTake() {
+  if (takeUrl) { URL.revokeObjectURL(takeUrl); takeUrl = null; }
+  mineAudio.removeAttribute("src");
+  $("mineBtn").disabled = true; $("cmpBtn").disabled = true;
+}
+function releaseMic() { if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; } }
+
+function startRecognition() {
+  if (!SR || !settings.score) return false;
+  rec = new SR();
+  rec.lang = "en-US"; rec.interimResults = true; rec.maxAlternatives = 3; rec.continuous = false;
+  gotFinal = false; srFailed = false;
+  rec.onresult = e => {
+    let interim = "";
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+      const r = e.results[i];
+      if (r.isFinal) { gotFinal = true; evaluate(Array.from(r).map(a => a.transcript)); }
+      else interim += r[0].transcript;
+    }
+    if (!gotFinal) $("said").textContent = interim;
+  };
+  rec.onerror = e => { srFailed = true; notice(SR_ERRORS[e.error] || `Nhận giọng nói gặp lỗi (${e.error}). Phần ghi âm vẫn chạy.`); };
+  rec.onend = () => {
+    rec = null;
+    if (!gotFinal && $("score").textContent === "…") $("score").innerHTML = "–";
+    /* when recognition finishes normally, it also ends the take */
+    if (recording && !srFailed) stopTake();
+    if (!recording && !gotFinal && !srFailed && settings.score) $("said").textContent = "Chưa nhận ra câu nào. Thử nói to và rõ hơn.";
+  };
+  try { rec.start(); return true; } catch { srFailed = true; return false; }
+}
+
+async function startTake() {
+  stopPlayback();
+  notice("");
+  if (!canRecord && !SR) { notice("Trình duyệt này không ghi âm được. Trên iPhone hãy dùng Safari bản mới."); return; }
+  clearTake();
+  renderSentence(null);
+  $("score").innerHTML = settings.score && SR ? "…" : "–";
+  $("said").textContent = settings.score && SR ? "" : "Đang ghi âm. Bấm “Dừng” khi nói xong.";
+  $("feedback").textContent = "";
+  setRecording(true);
+
+  /* start recognition first, inside the tap, which Safari needs */
+  const srOn = startRecognition();
+
+  if (canRecord) {
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
+    } catch (err) {
+      if (!srOn) { setRecording(false); notice("Không mở được micro. Hãy cho phép micro cho trang này (trên iPhone: Cài đặt > Safari > Micro)."); return; }
+    }
+    if (stream && recording) {
+      const type = ["audio/mp4", "audio/webm;codecs=opus", "audio/webm"].find(t => MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(t));
+      try {
+        recorder = new MediaRecorder(stream, type ? { mimeType: type } : undefined);
+        chunks = [];
+        recorder.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
+        recorder.onstop = () => {
+          releaseMic();
+          if (!chunks.length) return;
+          const blob = new Blob(chunks, { type: recorder.mimeType || type || "audio/mp4" });
+          takeUrl = URL.createObjectURL(blob);
+          mineAudio.src = takeUrl; mineAudio.load();
+          $("mineBtn").disabled = false; $("cmpBtn").disabled = false;
+          if (!settings.score || !SR || srFailed) $("said").textContent = "Đã ghi xong. Bấm “So sánh” để nghe mẫu và giọng mình xen kẽ.";
+          recorder = null;
+        };
+        recorder.start();
+      } catch { releaseMic(); }
+    } else if (stream && !recording) releaseMic();
+  }
+  clearTimeout(recTimer);
+  recTimer = setTimeout(() => { if (recording) stopTake(); }, 20000);
+}
+
+function stopTake() {
+  clearTimeout(recTimer);
+  setRecording(false);
+  if (rec) try { rec.stop(); } catch {}
+  if (recorder && recorder.state !== "inactive") recorder.stop(); else releaseMic();
+}
+
+/* ---------- playback & comparison ---------- */
+let cmpToken = 0;
+function stopPlayback() {
+  cmpToken++;
+  if ("speechSynthesis" in window) speechSynthesis.cancel();
+  mineAudio.pause();
+  $("cmpBtn").classList.remove("active");
+  $("cmpBtn").textContent = "So sánh";
+  $("playing").textContent = "";
+}
+function stopEverything() { if (recording) stopTake(); stopPlayback(); }
+
+function playMine(onend) {
+  mineAudio.currentTime = 0;
+  mineAudio.onended = () => onend && onend();
+  mineAudio.play().catch(() => { notice("Không phát được bản ghi. Thử bấm “Nghe giọng mình”."); onend && onend(); });
+}
+
+function compare() {
+  if ($("cmpBtn").classList.contains("active")) { stopPlayback(); return; }
+  if (!takeUrl) return;
+  if (recording) stopTake();
+  stopPlayback();
+  const token = cmpToken;
+  $("cmpBtn").classList.add("active"); $("cmpBtn").textContent = "Dừng";
+  /* unlock the audio element during the tap so iOS lets it play later */
+  mineAudio.muted = true;
+  mineAudio.play().then(() => { mineAudio.pause(); mineAudio.currentTime = 0; mineAudio.muted = false; }).catch(() => { mineAudio.muted = false; });
+
+  const steps = ["model", "mine", "model", "mine"];
+  const run = k => {
+    if (token !== cmpToken) return;
+    if (k >= steps.length) { stopPlayback(); $("playing").textContent = "Xong. Giọng mình đã nhấn đúng các chữ xanh và lên xuống giọng giống mẫu chưa?"; return; }
+    const who = steps[k];
+    $("playing").textContent = `${who === "model" ? "Đang phát: mẫu" : "Đang phát: giọng bạn"} (${k + 1}/4)`;
+    const next = () => setTimeout(() => run(k + 1), 450);
+    if (who === "model") speak(current().en, settings.rate, next);
+    else playMine(next);
+  };
+  run(0);
+}
+
+/* ---------- wiring ---------- */
+$("recBtn").addEventListener("click", () => recording ? stopTake() : startTake());
+$("playBtn").addEventListener("click", () => { if (recording) stopTake(); stopPlayback(); speak(current().en); });
+$("cmpBtn").addEventListener("click", compare);
+$("mineBtn").addEventListener("click", () => { stopPlayback(); playMine(); });
+$("prevBtn").addEventListener("click", () => { settings.idx = (settings.idx - 1 + list().length) % list().length; render(); });
+$("nextBtn").addEventListener("click", () => { settings.idx = (settings.idx + 1) % list().length; render(); });
+$("randBtn").addEventListener("click", () => { const l = list(); if (l.length < 2) return; let k; do { k = Math.floor(Math.random() * l.length); } while (k === settings.idx); settings.idx = k; render(); });
+$("resetBtn").addEventListener("click", () => { if (confirm("Xoá toàn bộ điểm đã lưu?")) { best = {}; save("vet:best", best); render(); } });
+
+$("optStress").checked = settings.stress;
+$("optVi").checked = settings.showVi;
+$("optScore").checked = settings.score;
+$("rate").value = settings.rate;
+const showRate = () => $("rateVal").textContent = Number(settings.rate).toFixed(2).replace(/0$/, "") + "×";
+showRate();
+function applyStress() { $("target").classList.toggle("stress", settings.stress); $("stressHint").hidden = !settings.stress; }
+applyStress();
+$("optStress").addEventListener("change", e => { settings.stress = e.target.checked; applyStress(); save("vet:settings", settings); });
+$("optVi").addEventListener("change", e => { settings.showVi = e.target.checked; $("vi").hidden = !settings.showVi; save("vet:settings", settings); });
+$("optScore").addEventListener("change", e => { settings.score = e.target.checked; $("legend").hidden = !settings.score; save("vet:settings", settings); });
+$("legend").hidden = !settings.score;
+$("rate").addEventListener("input", e => { settings.rate = parseFloat(e.target.value); showRate(); save("vet:settings", settings); });
+$("voice").addEventListener("change", e => { settings.voice = e.target.value; save("vet:settings", settings); speak("Hello, this is my voice."); });
+document.querySelectorAll("#levels button").forEach(b => {
+  b.setAttribute("aria-pressed", b.dataset.lv === settings.level ? "true" : "false");
+  b.addEventListener("click", () => {
+    settings.level = b.dataset.lv; settings.idx = 0;
+    document.querySelectorAll("#levels button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+    render();
+  });
+});
+document.addEventListener("keydown", e => {
+  if (e.target.closest("input, select, textarea")) return;
+  if (e.key === "ArrowRight") $("nextBtn").click();
+  if (e.key === "ArrowLeft") $("prevBtn").click();
+});
+
+if (!SR && !canRecord) notice("Trình duyệt này không hỗ trợ ghi âm hay nhận giọng nói. Hãy mở bằng Safari trên iPhone, hoặc Chrome trên máy tính và Android.");
+else if (!SR) notice("Trình duyệt này không chấm từ được, nhưng bạn vẫn ghi âm và so sánh với mẫu được.");
+if ("speechSynthesis" in window) { loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; } else $("playBtn").disabled = true;
+render();
+</script>
+</body>
+</html>
