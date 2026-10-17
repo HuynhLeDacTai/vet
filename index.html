@@ -483,7 +483,8 @@ async function startTake() {
   /* start recognition first, inside the tap, which Safari needs */
   const srOn = startRecognition();
 
-  if (canRecord) {
+  /* iOS aborts recognition when a second mic capture starts, so there scoring wins over recording */
+  if (canRecord && !(isIOS && srOn)) {
     try {
       stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
     } catch (err) {
