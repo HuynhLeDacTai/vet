@@ -390,12 +390,19 @@ function loadVoices() {
   if (settings.voice && voices.some(v => v.voiceURI === settings.voice)) sel.value = settings.voice;
   else if (voices[0]) settings.voice = voices[0].voiceURI;
 }
+let ttsCancelAt = 0;
+function ttsCancel() {
+  if ("speechSynthesis" in window && (speechSynthesis.speaking || speechSynthesis.pending)) { speechSynthesis.cancel(); ttsCancelAt = Date.now(); }
+}
 function speak(text, rate, onend) {
   if (!("speechSynthesis" in window) || !text) { if (onend) onend(); return; }
-  speechSynthesis.cancel();
+  ttsCancel();
+  /* iOS silently drops a speak() issued right after cancel(), so wait a tick after one */
+  const justCancelled = Date.now() - ttsCancelAt < 150;
   const u = new SpeechSynthesisUtterance(text);
   u.lang = "en-US"; u.rate = rate || settings.rate;
-  const v = voices.find(v => v.voiceURI === settings.voice); if (v) u.voice = v;
+  /* iOS lists voices (Siri, enhanced, novelty) that play nothing, so there only use one the user picked */
+  const v = (!isIOS || settings.voicePicked) && voices.find(v => v.voiceURI === settings.voice); if (v) u.voice = v;
   if (onend) {
     let done = false;
     const finish = () => { if (!done) { done = true; onend(); } };
@@ -403,7 +410,7 @@ function speak(text, rate, onend) {
     /* safety net: some iOS versions skip onend */
     setTimeout(finish, Math.max(3000, text.length * 110 / u.rate));
   }
-  speechSynthesis.speak(u);
+  if (justCancelled) setTimeout(() => speechSynthesis.speak(u), 100); else speechSynthesis.speak(u);
 }
 
 /* ---------- recording + recognition ---------- */
@@ -517,7 +524,7 @@ function stopTake() {
 let cmpToken = 0;
 function stopPlayback() {
   cmpToken++;
-  if ("speechSynthesis" in window) speechSynthesis.cancel();
+  ttsCancel();
   mineAudio.pause();
   $("cmpBtn").classList.remove("active");
   $("cmpBtn").textContent = "So sánh";
@@ -578,7 +585,7 @@ $("optVi").addEventListener("change", e => { settings.showVi = e.target.checked;
 $("optScore").addEventListener("change", e => { settings.score = e.target.checked; $("legend").hidden = !settings.score; save("vet:settings", settings); });
 $("legend").hidden = !settings.score;
 $("rate").addEventListener("input", e => { settings.rate = parseFloat(e.target.value); showRate(); save("vet:settings", settings); });
-$("voice").addEventListener("change", e => { settings.voice = e.target.value; save("vet:settings", settings); speak("Hello, this is my voice."); });
+$("voice").addEventListener("change", e => { settings.voice = e.target.value; settings.voicePicked = true; save("vet:settings", settings); speak("Hello, this is my voice."); });
 document.querySelectorAll("#levels button").forEach(b => {
   b.setAttribute("aria-pressed", b.dataset.lv === settings.level ? "true" : "false");
   b.addEventListener("click", () => {
